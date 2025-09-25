@@ -1,7 +1,7 @@
 # Geo-R1
 
 ## Setup
-* We use VLM-R1 as our main codebase
+* We use VLM-R1 as our main codebase (train and eval)
   ```bash
   # install torch==2.6.0, cuda 12.4 version
   conda create -n vlm-r1 python=3.10
