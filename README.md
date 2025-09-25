@@ -31,6 +31,8 @@
 ## Dataset
 Geo-R1 utilizes several public remote sensing datasets. We provide a series of preprocessing scripts to convert them into a unified format suitable for our training and evaluation pipelines, also you can download our processed dataset from repo and use it directly.
 
+You need to download the images from the original dataset. We only provide the annotation due to the copyright issue.
+
 | Dataset Name | Task Type | Evaluation Script |
 | :--- | :--- | :--- |
 | **EarthReason** | **FS-GRES** | `test_gres_eval.py` |
