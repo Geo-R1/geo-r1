@@ -1,5 +1,22 @@
 # Geo-R1
 
+## Setup
+* We use VLM-R1 as our main codebase
+  ```bash
+  # install torch==2.6.0, cuda 12.4 version
+  conda create -n vlm-r1 python=3.10
+  conda activate vlm-r1
+  git clone https://github.com/om-ai-lab/VLM-R1.git
+  cd VLM-R1
+  bash setup.sh
+  ```
+
+* We use Easy-R1 to train 7B, 32B models.
+  ```bash
+  git clone https://github.com/hiyouga/EasyR1.git
+  cd EasyR1
+  pip install -e .
+  ```
 ## Model
 * Load or download model from [Geo-R1 huggingface page](https://huggingface.co/Geo-R1)
   
