@@ -24,11 +24,14 @@ Geo-R1 utilizes several public remote sensing datasets. We provide a series of p
 
 ## Inference
 ### FS-REC Task
-This task is a simplified version of GRES where the output is a single bounding box. The evaluation is based on **IoU@0.5**. This is primarily tested on the **VRSBench** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
+This task is a simplified version of GRES where the output is a single bounding box. The evaluation is based on **IoU@0.5** and **IoU@0.7**. This is primarily tested on the **VRSBench** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
 
-**Example Evaluation Command (on NWPU dataset):**
+**Example Evaluation Command (on VRSBench dataset):**
 ```bash
+# you need to change the model path in file
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_rec_r1_eval.py
+# analyze
+python recal_rec_acc_unique.py
 ```
 
 
@@ -49,7 +52,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_ovd_nwpu_e
 
 This task evaluates the model's ability to produce a segmentation mask for a given textual description, using SAM as a proxy. We use **gIoU** (mean IoU) and **cIoU** (cumulative IoU) as the primary metrics.
 
-**Example Evaluation Command (on EarthReason dataset):**
+**Example Evaluation Command (on EarthReason or RRSIS-D dataset):**
 ```bash
 # Set CUDA devices, then run the evaluation script
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_gres_eval.py \
