@@ -2,6 +2,7 @@
 
 ## Model
 * Load or download model from [Geo-R1 huggingface page](https://huggingface.co/Geo-R1)
+  
 * Naming Convention "Geo-R1-3B-GRPO-GRES-10shot"
   * **Geo-R1**: Our model trained with RL-based post-training paradigm 
   * **3B**: Model size
