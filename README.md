@@ -39,15 +39,25 @@ You need to download the images from the original dataset. We only provide the a
 | **RRSIS-D** | **FS-GRES (Cross-Dataset Eval)** | `test_gres_eval.py` |
 | **NWPU-VHR-10** | **FS-OVD** | `test_ovd_nwpu_eval.py` |
 | **VRSBench** | **FS-REC** | `test_rec_r1_eval.py` |
+| **DIOR-RSVG** | **FS-REC (Cross-Dataset Eval)** | `test_rec_r1_eval.py` |
 
 
 ## Inference
+> Note: If you train your model in your env, you can directly use the following scripts. However, if you download the checkpoint, you need to load the AutoProcessor from the original Qwen model. Such as the following
+> ```python
+> MODEL_PATH = "/training/dapo-ckpt/Geo-R1-3B-GRPO-REC-10shot"
+> ORI_MODEL_PATH = "/training/model/Qwen2.5-VL-3B-Instruct"
+>
+> # processor need to be loaded from original model
+> processor = AutoProcessor.from_pretrained(ORI_MODEL_PATH)
+> ```
+
 ### FS-REC Task
-This task is a simplified version of GRES where the output is a single bounding box. The evaluation is based on **IoU@0.5** and **IoU@0.7**. This is primarily tested on the **VRSBench** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
+This task is a simplified version of GRES where the output is a single bounding box. The evaluation is based on **IoU@0.5** and **IoU@0.7**. This is primarily tested on the **VRSBench** and **DIOR-RSVG** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
 
 **Example Evaluation Command (on VRSBench dataset):**
 ```bash
-# you need to change the model path in file
+# you need to change the model path and test files in script
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_rec_r1_eval.py
 # analyze
 python recal_rec_acc_unique.py
@@ -59,6 +69,7 @@ This task evaluates the model's ability to detect all objects of a given class i
 
 **Example Evaluation Command (on NWPU dataset):**
 ```bash
+# Set CUDA devices, then run the evaluation script
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_ovd_nwpu_eval.py \
     --model_path /path/to/your/Geo-R1-3B-GRPO-OVD-10shot/checkpoint \
     --annotation_path /path/to/your/nwpu/annotations_test_set_new.json \
@@ -73,7 +84,6 @@ This task evaluates the model's ability to produce a segmentation mask for a giv
 
 **Example Evaluation Command (on EarthReason or RRSIS-D dataset):**
 ```bash
-# Set CUDA devices, then run the evaluation script
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_gres_eval.py \
     --model_path /path/to/your/Geo-R1-3B-GRPO-GRES-10shot/checkpoint \
     --data_path /path/to/your/test_earthreason_final.jsonl \
