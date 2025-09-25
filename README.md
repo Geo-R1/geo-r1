@@ -1,4 +1,15 @@
-## Hi there 👋
+# Geo-R1
+
+## Model
+
+## Dataset
+
+## FS-REC Task
+## FS-OVD Task
+## FS-GRES Task
+
+
+
 
 <!--
 **Geo-R1/geo-r1** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
