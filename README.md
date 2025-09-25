@@ -43,7 +43,7 @@ You need to download the images from the original dataset. We only provide the a
 
 
 ## Inference
-> Note: If you train your model in your env, you can directly use the following scripts. However, if you download the checkpoint, you need to load the AutoProcessor from the original Qwen model. Such as the following
+> Note: If you train your model in your env, you can directly use the following scripts. However, if you use the checkpoint from huggingface, you have to load the AutoProcessor from the original Qwen model, e.g.
 > ```python
 > MODEL_PATH = "/training/dapo-ckpt/Geo-R1-3B-GRPO-REC-10shot"
 > ORI_MODEL_PATH = "/training/model/Qwen2.5-VL-3B-Instruct"
@@ -51,9 +51,10 @@ You need to download the images from the original dataset. We only provide the a
 > # processor need to be loaded from original model
 > processor = AutoProcessor.from_pretrained(ORI_MODEL_PATH)
 > ```
+> Note: If you encounter "to_dict()" error, please check the version of transformer package. Replace config.json using the one from orginal Qwen2.5-VL model might be a solution.
 
 ### FS-REC Task
-This task is a simplified version of GRES where the output is a single bounding box. The evaluation is based on **IoU@0.5** and **IoU@0.7**. This is primarily tested on the **VRSBench** and **DIOR-RSVG** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
+This task is a simplified version of GREC where the output is a single bounding box. The evaluation is based on **IoU@0.5** and **IoU@0.7**. This is primarily tested on the **VRSBench** and **DIOR-RSVG** dataset. The evaluation results are typically generated in a rich JSON format for detailed analysis.
 
 **Example Evaluation Command (on VRSBench dataset):**
 ```bash
