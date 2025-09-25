@@ -67,7 +67,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nproc_per_node=8 test_ovd_nwpu_e
 
 ### FS-GRES Task
 
-This task evaluates the model's ability to produce a segmentation mask for a given textual description, using SAM as a proxy. We use **gIoU** (mean IoU) and **cIoU** (cumulative IoU) as the primary metrics.
+This task evaluates the model's ability to produce a segmentation mask for a given textual description, using SAM as a tool. We use **gIoU** (mean IoU) as the primary metrics.
 
 **Example Evaluation Command (on EarthReason or RRSIS-D dataset):**
 ```bash
