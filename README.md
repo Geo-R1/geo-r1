@@ -1,12 +1,21 @@
 # Geo-R1
 
 ## Model
+* Load or download model from (Geo-R1 huggingface page)[https://huggingface.co/Geo-R1]
+* Naming Convention "Geo-R1-3B-GRPO-GRES-5shot"
+  * Geo-R1: Our model trained with RL-based post-training paradigm 
+  * 3B: Model size
+  * GRPO: RL algorithm
+  * GRES: General Referring Expression Task
+  * 5shot: Number of few-shot samples
+
 
 ## Dataset
 
-## FS-REC Task
-## FS-OVD Task
-## FS-GRES Task
+## Inference
+### FS-REC Task
+### FS-OVD Task
+### FS-GRES Task
 
 
 
